@@ -8,18 +8,25 @@ In action:
 https://www.youtube.com/watch?v=Wvr_8U9hjI0
 
 # Permissions
-* sv.*:
+* sv.*
+
      description: Gives all Supervisor commands.
-* sv.sv:
+* sv.sv
+
      description: Shows base command
-* sv.help:
+* sv.help
+
      description: Shows help page
-* sv.spy:
+* sv.spy
+
      description: Toggles spy-mode
-* sv.spyexit:
+* sv.spyexit
+
      description: Exits spy-mode
-* sv.freeze:
+* sv.freeze
+
      description: Freezes player
-* sv.unfreeze:
+* sv.unfreeze
+
      description: Unfreezes player
 
