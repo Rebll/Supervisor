@@ -30,7 +30,8 @@ public class Commands
     config = plugin.getConfig();
   }
   
-
+  public static boolean CommandSpy = false;
+  public static boolean cSpyEnabled = true;
 
 
 
@@ -189,17 +190,27 @@ public class Commands
           player2.setWalkSpeed(0.2F);
           player2.setFlySpeed(0.1F);
           player2.setBanned(false);
+        
         }
-      }
+        } else {
+        	if ((args.length == 1) && (args[0].equalsIgnoreCase("cspy") && cSpyEnabled == false)) {
+        		cSpyEnabled = true;
+        	        if (sender.hasPermission("sv.cspy")) {
+        	        	sender.sendMessage(ChatColor.RED + "Command-Spy has been enabled!");
+        	          CommandSpy = true;
+        	          return true;
+        	          
+        	        } else {
+        	        	if ((args.length == 1) && (args[0].equalsIgnoreCase("cspy") && cSpyEnabled == true)) {
+        	        		cSpyEnabled = false;
+        	        		sender.sendMessage(ChatColor.RED + "Command-Spy has been disabled!");
+        	        		CommandSpy = true;
+        	        	}
+        	        }
+        	}
+        }
     }
-    
-
-
-
-
-
-
-
-    return false;
+    return true;
   }
 }
+

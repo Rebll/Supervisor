@@ -1,5 +1,6 @@
 package me.Brightest;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
@@ -16,6 +17,8 @@ public class Supervisor
   
   public void onEnable()
   {
+	Bukkit.getServer().getPluginManager().registerEvents(new Events(null), this);
+	  
     plugin = this;
     
     FileConfiguration config = getConfig();
