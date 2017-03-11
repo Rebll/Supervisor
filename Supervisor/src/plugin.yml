@@ -1,0 +1,28 @@
+ name: Supervisor
+ version: 1.0
+ description: Supervising plugin!
+ author: Brightest
+ 
+ main: me.Brightest.Supervisor
+ 
+ commands:
+   sv :
+     description: Base supervisor command
+     permission: sv.sv
+     usage: /<command>
+ 
+ permissions:
+   sv.*:
+     description: Gives all supervisor commands.
+   sv.sv:
+     description: Shows base command
+   sv.help:
+     description: Shows help
+   sv.spy:
+     description: Toggles spy
+   sv.spyexit:
+     description: Exits spy
+   sv.freeze:
+     description: Freezes
+   sv.unfreeze:
+     description: Unfreezes
