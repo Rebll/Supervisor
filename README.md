@@ -1,5 +1,8 @@
 # Supervisor
-A Spigot server supervising Plugin!
+
+![Supervisor](http://i.imgur.com/Mg23N5N.png)
+
+A plugin created for Minecraft server staff members. This plugin helps you tracking down & interrogating cheaters and other rule-breaking.
 
 If you are lazy to compile this yourself i have included the .jar file below for you to download.
 http://ge.tt/4cmO3Dj2
@@ -29,4 +32,7 @@ https://www.youtube.com/watch?v=Wvr_8U9hjI0
 * sv.unfreeze
 
      description: Unfreezes player
+* sv.cspy
+
+     description: Allows you to sniff /whispers
 
