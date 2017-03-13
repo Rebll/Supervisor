@@ -8,7 +8,7 @@ If you are lazy to compile this yourself i have included the .jar file below for
 http://ge.tt/4cmO3Dj2
 
 In action:
-![Supervisor example](https://www.youtube.com/watch?v=z_vcW8whJHg&feature=youtu.be)
+[![SupervisorExampleImage](https://img.youtube.com/vi/z_vcW8whJHg/0.jpg)](https://www.youtube.com/watch?v=z_vcW8whJHg)
 
 # Permissions
 * sv.*
