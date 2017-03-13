@@ -7,7 +7,7 @@ A plugin created for Minecraft server staff members. This plugin helps you track
 If you are lazy to compile this yourself i have included the .jar file below for you to download.
 http://ge.tt/4cmO3Dj2
 
-In action:
+# In action:
 [![SupervisorExampleImage](https://img.youtube.com/vi/z_vcW8whJHg/0.jpg)](https://www.youtube.com/watch?v=z_vcW8whJHg)
 
 # Permissions
