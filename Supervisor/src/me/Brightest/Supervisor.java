@@ -5,32 +5,31 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class Supervisor
-  extends JavaPlugin
-{
+public class Supervisor extends JavaPlugin {
   private static Plugin plugin;
   
   public Supervisor() {}
   
-  public void onEnable()
-  {
-	Bukkit.getServer().getPluginManager().registerEvents(new Events(null), this);
+  public void onEnable() {
 	  
-    plugin = this;
+	  Commands commands = new Commands(this);
+	  
+	Bukkit.getServer().getPluginManager().registerEvents(new cSpyEvent(commands), this);
+	Bukkit.getServer().getPluginManager().registerEvents(new StaffChatEvent(commands), this);
+    getCommand("sv").setExecutor(new Commands(this));
     
     FileConfiguration config = getConfig();
-    
     getConfig().options().copyDefaults(true);
     saveConfig();
-    
-    getCommand("sv").setExecutor(new Commands(this));
+    plugin = this;
+
   }
   
-  public void onDisable()
-  {
-    plugin = null;
+  public void onDisable() {
+	  
   }
 }

@@ -36,7 +36,9 @@ implements CommandExecutor
 	}
 
 	public static boolean cSpyEnabled = false;
-	public static boolean frozen = false;
+	public String message = "";
+	public static ArrayList<Player> staffchat = new ArrayList<Player>();
+	public List<String> frozen = new ArrayList<String>();
 	public List<String> cspy = new ArrayList<String>();
 
 
@@ -132,10 +134,16 @@ implements CommandExecutor
 				World world = Bukkit.getServer().getWorld(config.getString("location.World"));
 				Location back = new Location(world, x, y, z);
 				if (sender.hasPermission("sv.spyexit")) {
+					player.setGameMode(GameMode.SURVIVAL);
 					player.teleport(back);
 					player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 1, 1));
 					sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.AQUA + "You are no longer spying!");
 					return true;
+				}
+				
+				if (player == null) {
+					player.setGameMode(GameMode.SURVIVAL);
+					player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 1, 1));
 				}
 
 			}
@@ -146,7 +154,7 @@ implements CommandExecutor
 				}
 
 			}
-			else if ((args.length == 2) && (args[0].equalsIgnoreCase("freeze") && frozen == false))
+			else if ((args.length == 2) && (args[0].equalsIgnoreCase("freeze") && !frozen.contains(Bukkit.getPlayer(args[1]).getName())))
 			{
 				Player player2 = Bukkit.getPlayer(args[1]);
 
@@ -159,11 +167,7 @@ implements CommandExecutor
 				else
 				{
 					
-					if (frozen == true) {
-						sender.sendMessage(ChatColor.RED + "" + player2.getName() + ChatColor.AQUA + " is already frozen!");
-					}
-					
-					frozen = true;
+					frozen.add(player2.getName());
 					sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.AQUA + "You have frozen: " + ChatColor.RED + player2.getName());
 					Bukkit.getServer().broadcastMessage(ChatColor.RED + player2.getName() + ChatColor.AQUA + " has been frozen by: " + ChatColor.RED + "" + ChatColor.BOLD + sender.getName());
 					player2.sendMessage(ChatColor.RED + "You have been frozen by: " + ChatColor.AQUA + sender.getName());
@@ -186,7 +190,7 @@ implements CommandExecutor
 				}
 
 			}
-			else if ((args.length == 2) && (args[0].equalsIgnoreCase("unfreeze") && frozen == true))
+			else if ((args.length == 2) && (args[0].equalsIgnoreCase("unfreeze") && frozen.contains(Bukkit.getPlayer(args[1]).getName())))
 			{
 				Player player2 = Bukkit.getPlayer(args[1]);
 
@@ -196,12 +200,8 @@ implements CommandExecutor
 					}
 				}
 				
-				if (frozen == false) {
-					sender.sendMessage(ChatColor.RED + "" + player2 + ChatColor.AQUA + " is not frozen!");
-				}
-				
 				else {
-					frozen = false;
+					frozen.remove(player2.getName());
 					player2.sendMessage(ChatColor.RED + "You have been unfrozen by: " + ChatColor.AQUA + sender.getName());
 					sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.AQUA + "You have unfrozen: " + ChatColor.RED + player2.getName());
 					player2.setInvulnerable(false);
@@ -228,6 +228,31 @@ implements CommandExecutor
 						sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.RED + "Command-Spy " + ChatColor.AQUA + "has been disabled!");
 						cSpyEnabled = false;
 						return true;
+
+				} else {
+				}         
+					
+					if((args.length == 1) && (args[0].equalsIgnoreCase("sc"))) {
+						
+						if(!(player.hasPermission("sv.sc"))) {
+							player.sendMessage(ChatColor.RED + "Insufficent permissions!");
+							return true;
+						}
+						
+						if(staffchat.contains(player)) {
+							staffchat.remove(player);
+							player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.RED + "Staff-Chat " + ChatColor.AQUA + "has been disabled.");
+							return true;
+						} else
+							
+							staffchat.add(player);
+						player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.RED + "Staff-Chat " + ChatColor.AQUA + "has been enabled.");
+						return true;
+					}
+					
+					if(args.length >= 1) {
+						player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "[SV] " + ChatColor.AQUA + "Usage: " + ChatColor.RED + "/sv sc");
+						return true;
 					}
 				}
 			}
@@ -235,4 +260,3 @@ implements CommandExecutor
 		return true;
 	}
 }
-

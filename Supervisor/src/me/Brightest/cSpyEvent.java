@@ -9,13 +9,13 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class Events implements Listener {
+public class cSpyEvent implements Listener {
 	
 	Commands plugin;
 	
-	public Events(Commands instance)
+	public cSpyEvent(Commands commands)
 	{
-	    plugin = instance;
+	    plugin = commands;
 	}
 	
 	@EventHandler
