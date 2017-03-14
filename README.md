@@ -35,4 +35,10 @@ http://ge.tt/4cmO3Dj2
 * sv.cspy
 
      description: Allows you to sniff /whispers
+* sv.sc
+
+     description: Permission to enable staff-chat
+ * sv.scvision
+
+     description: Allows you to see staff-chat
 
