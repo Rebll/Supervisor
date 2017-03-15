@@ -2,10 +2,11 @@
 
 ![Supervisor](http://i.imgur.com/Mg23N5N.png)
 
-A plugin created for Minecraft server staff members. This plugin helps you tracking down & interrogating cheaters and other rule-breaking.
+A plugin created for Minecraft server staff members. This plugin helps you track cheaters & rule breakers to interrogate them.
+
 
 If you are lazy to compile this yourself i have included the .jar file below for you to download.
-http://ge.tt/4cmO3Dj2
+https://www.spigotmc.org/resources/supervisor-server-moderation-tools.37896/
 
 # In action:
 [![SupervisorExampleImage](https://img.youtube.com/vi/z_vcW8whJHg/0.jpg)](https://www.youtube.com/watch?v=z_vcW8whJHg)
